@@ -1,0 +1,5 @@
+mountdir : "/dvd"
+repo1 : "mydvd1"
+repo1des : "my yum1 repo"
+repo2 : "mydvd2"
+repo2des : "my yum2 repo"

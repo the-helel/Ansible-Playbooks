@@ -1,0 +1,26 @@
+- hosts : localhost
+  vars_files:
+  - vars.yml
+  
+  tasks:
+  - file:
+      path: mountdir
+      state: directory
+
+  - mount:
+      src: "/dev/cdrom"
+      path: mountdir
+      state: mounted
+      fstype: iso9660
+  
+  - yum_repository:
+      baseurl: "file:///{{mountdir}}/AppStream"
+      name: repo1
+      description: repo1des
+      gpgcheck: no
+
+  - yum_repository:
+      baseurl: "file:///{{mountdir}}/BaseOS"
+      name: repo2
+      description: repo2des
+      gpgcheck: no
